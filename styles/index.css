@@ -1,0 +1,85 @@
+@import './components.css';
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+p:not(:last-child) {
+  margin-bottom: 0.875rem;
+}
+
+ol,
+ul {
+  margin-left: 1rem;
+}
+
+ol {
+  list-style-type: disc;
+}
+
+/* Global CSS */
+section[id] {
+  scroll-margin-top: 300px; /* Adjust this value based on your header height */
+}
+
+section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Responsive container */
+.container {
+  margin-top: 0;
+  flex-grow: 1;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1800px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.hero-title {
+  font-size: 14vw; /* Adjust this value as needed */
+  line-height: 1.1; /* Optional: Adjust line height for better spacing */
+  overflow: hidden; /* Hide overflow if text is too long */
+}
+
+@media (min-width: 1250px) {
+  .hero-title {
+    font-size: 15vw; /* Adjust this value as needed */
+  }
+}
+
+.work-title {
+  font-size: 12vw; /* Adjust this value as needed */
+  line-height: 1.1; /* Optional: Adjust line height for better spacing */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow if text is too long */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+.selected-work-image {
+  background-attachment: fixed !important;
+}
+
+@media (max-width: 1200px) {
+  .selected-work-image {
+    background-attachment: scroll !important;
+  }
+}
+
+/* Responsive Title Styles */

@@ -1,0 +1,71 @@
+/* TextContent Component Styles */
+.text-content {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.text-content.text-center {
+  text-align: center;
+}
+
+.text-content.text-right {
+  text-align: right;
+}
+
+.text-content.text-left {
+  text-align: left;
+}
+
+.text-content.text-split {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.text-content-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.text-content-body {
+  max-width: 70ch;
+  margin-bottom: 2rem;
+}
+
+.text-content.text-center .text-content-body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-content.text-center .text-content-buttons {
+  justify-content: center;
+}
+
+.text-content.text-right .text-content-body {
+  margin-left: auto;
+}
+
+.text-content.text-right .text-content-buttons {
+  justify-content: flex-end;
+}
+
+.text-content.text-split .text-content-body {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .text-content.text-split {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .text-content-title {
+    font-size: 2rem;
+  }
+}
