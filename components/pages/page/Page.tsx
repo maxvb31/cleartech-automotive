@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
 import { Header } from '@/components/shared/Header'
 import { Hero } from '@/components/sections/Hero'
-import TextSection from '@/components/sections/TextSection'
 import type { PagePayload } from '@/types'
 
 export interface PageProps {
@@ -55,8 +54,7 @@ export function Page({ data }: PageProps) {
           switch (section._type) {
             case 'hero':
               return <Hero key={index} {...section} />
-            case 'textSection':
-              return <TextSection key={index} section={section} />
+
             default:
               return null
           }

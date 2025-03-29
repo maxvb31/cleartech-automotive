@@ -9,6 +9,7 @@ import SingleImage from '@/components/shared/SingleImage'
 import DoubleImages from '@/components/shared/DoubleImages'
 import Button from '@/components/Button'
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
+import TextSection from '@/components/sections/TextSection'
 
 export interface ProjectPageProps {
   data: ProjectPayload | null
@@ -25,8 +26,6 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
     const lenis = new Lenis({
       duration: 0.3, // Adjust duration for smoother scroll
       easing: (t) => 1 - Math.pow(1 - t, 2.5), // Adjust easing for natural scrolling
-      smooth: true,
-      smoothTouch: false, // Optional: Disable touch smoothing for better performance
     })
 
     // Request animation frame to ensure smoothness
@@ -57,6 +56,8 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
             image2={section.image2}
           />
         )
+      case 'textSection':
+        return <TextSection key={index} section={section} />
       default:
         return null
     }

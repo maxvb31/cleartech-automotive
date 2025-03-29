@@ -1,28 +1,24 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import colorPicker from '../fields/colorPicker'
+// ./sanity/schemas/documents/sections/hero.ts
+import { defineType, defineField, defineArrayMember } from 'sanity'
+import { BlockElementIcon } from '@sanity/icons'
 import { ColorWheelIcon } from '@sanity/icons'
+import colorPicker from '../fields/colorPicker'
 
 export default defineType({
-  name: 'service',
-  title: 'Service',
-  type: 'document',
-  icon: DocumentIcon,
-  // Uncomment below to have edits publish automatically as you type
-  // liveEdit: true,
+  name: 'infoBlock',
+  title: 'Info Block',
+  type: 'object',
+  icon: BlockElementIcon,
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your service.',
       title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'number',
-      description: 'This field is the number of the service.',
-      title: 'Number',
-      type: 'string',
+      name: 'image',
+      title: 'Image',
+      type: 'customImage',
     }),
     defineField({
       name: 'overview',
@@ -31,7 +27,6 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'block',
           lists: [],
           marks: {
             annotations: [
@@ -81,6 +76,7 @@ export default defineType({
             { title: 'H3', value: 'h3' },
             { title: 'Quote', value: 'blockquote' },
           ],
+          type: 'block',
         }),
         defineArrayMember({
           type: 'object',
@@ -117,4 +113,10 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'video',
+    },
+  },
 })

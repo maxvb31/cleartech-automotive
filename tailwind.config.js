@@ -13,6 +13,7 @@ module.exports = {
       sans: ['NeueHaasGrotesk', 'sans-serif'],
       inter: ['Inter', 'sans-serif'],
       helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+      michroma: ['Michroma', 'sans-serif'],
     },
     fontWeight: {
       thin: '200',

@@ -25,8 +25,9 @@ export const homePageQuery = groq`
       overview,
       ...,
       _type == 'hero' => {
-      ...,
-      title,
+        ...,
+        title,
+        overview,
         video {
           _type,
           asset-> {
@@ -44,64 +45,22 @@ export const homePageQuery = groq`
           anchor,
           externalLink,
           buttonColor
-        },
-      },
-      _type == 'textBlock' => {
-        ...,
-        tag,
-        overview,
-      },
-      _type == 'featuredWork' => {
-        ...,
-        title,
-        projects[]->{
-          _type,
-          coverImage,
-          title,
-          "slug": slug.current,
-          backgroundPattern,
-          category->{
-            _type,
-            name,
-          }
         }
       },
-      _type == 'serviceList' => {
-        ...,
-        title,
-        services[]->{
-          _type,
-          title,
-          overview,
-          number,
-          subServices[] {
-            _type,
-            title,
-            icon,
-            overview,
-            number
-          }
-        }
-      },
-      _type == 'aboutMe' => {
-        ...,
-        title,
-        overview,
-        image,
-        image2,
-        tag,
-        socialLinks[] {
-          text,
-          url,
-          icon
-        }
-      }
     },
-    _type == 'contact' => {
-      ...,
+    largeProductShowcase {
+      _type,
+      tagline,
       title,
-      buttonText
-    }
+      product,
+      buttons[] {
+        label,
+        "link": link-> { "slug": slug.current, title },
+        anchor,
+        externalLink,
+        buttonColor
+      },
+    },
   }
 `
 

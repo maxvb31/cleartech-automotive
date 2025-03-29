@@ -50,9 +50,6 @@ export default defineType({
         defineArrayMember({
           type: 'hero', // Use the simplified hero schema here
         }),
-        defineArrayMember({
-          type: 'textSection', // Include the text section schema
-        }),
       ],
     }),
   ],

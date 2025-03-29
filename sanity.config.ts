@@ -25,12 +25,13 @@ import hero from './sanity/schemas/sections/hero'
 import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
 import service from './sanity/schemas/documents/service'
 import customImage from './sanity/schemas/objects/customImage'
-import textContent from './sanity/schemas/objects/textContent'
-import textSection from './sanity/schemas/sections/textSection'
-
 // Import the custom desk structure
 import { deskStructure } from './sanity/deskStructure'
-
+import largeProductShowcase from './sanity/schemas/sections/largeProductShowcase'
+import infoTabs from './sanity/schemas/sections/infoTabs'
+import infoBlock from './sanity/schemas/sections/infoBlock'
+import infoTab from './sanity/schemas/objects/infoTab'
+import contact from './sanity/schemas/sections/contact'
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Max Burrows Studio'
 
@@ -53,14 +54,16 @@ export default defineConfig({
 
       // Sections
       hero,
-      textSection,
-
+      largeProductShowcase,
+      infoTabs,
+      infoBlock,
       // Objects
       milestone,
       timeline,
       button,
       customImage,
-      textContent,
+      infoTab,
+      contact,
       //Fields
       colorPicker,
     ],

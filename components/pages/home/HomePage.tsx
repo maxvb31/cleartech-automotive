@@ -9,8 +9,7 @@ import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import { Hero } from '@/components/sections/Hero'
-import TextSection from '@/components/sections/TextSection'
-
+import { LargeProductShowcase } from '@/components/sections/LargeProductShowcase'
 import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
@@ -58,8 +57,8 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         switch (section._type) {
           case 'hero':
             return <Hero key={index} {...section} />
-          case 'textSection':
-            return <TextSection key={index} section={section} />
+          case 'largeProductShowcase':
+            return <LargeProductShowcase key={index} {...section} />
           default:
             return null
         }

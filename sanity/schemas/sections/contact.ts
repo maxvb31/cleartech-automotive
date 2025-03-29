@@ -1,41 +1,33 @@
+// ./sanity/schemas/documents/sections/hero.ts
 import { defineType, defineField, defineArrayMember } from 'sanity'
-import { TextIcon } from '@sanity/icons'
+import { BlockElementIcon } from '@sanity/icons'
+import { ColorWheelIcon } from '@sanity/icons'
 import colorPicker from '../fields/colorPicker'
 
 export default defineType({
-  name: 'textContent',
-  title: 'Text Content',
+  name: 'contact',
+  title: 'Contact',
   type: 'object',
-  icon: TextIcon,
+  icon: BlockElementIcon,
   fields: [
-    defineField({
-      name: 'alignment',
-      title: 'Alignment',
-      type: 'string',
-      description: 'Choose how you want the content aligned',
-      options: {
-        list: [
-          { title: 'Left', value: 'left' },
-          { title: 'Center', value: 'center' },
-          { title: 'Right', value: 'right' },
-          { title: 'Split', value: 'split' },
-        ],
-        layout: 'radio',
-      },
-    }),
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
     }),
     defineField({
-      name: 'body',
-      title: 'Body Text',
-      description: 'Rich text content',
+      name: 'backgroundImage',
+      title: 'Background Image',
+      type: 'customImage',
+    }),
+    defineField({
+      name: 'overview',
+      description: 'A rich text body',
+      title: 'Body',
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'block',
+          lists: [],
           marks: {
             annotations: [
               {
@@ -53,7 +45,8 @@ export default defineType({
               {
                 name: 'color',
                 type: 'object',
-                title: 'Text Color',
+                title: 'Text Color (applies on published site)',
+                icon: ColorWheelIcon,
                 fields: [
                   {
                     name: 'color',
@@ -73,6 +66,7 @@ export default defineType({
               { title: 'Italic', value: 'em' },
               { title: 'Strong', value: 'strong' },
               { title: 'Underline', value: 'underline' },
+              { title: 'Strike', value: 'strike-through' },
             ],
           },
           styles: [
@@ -80,9 +74,41 @@ export default defineType({
             { title: 'H1', value: 'h1' },
             { title: 'H2', value: 'h2' },
             { title: 'H3', value: 'h3' },
-            { title: 'H4', value: 'h4' },
             { title: 'Quote', value: 'blockquote' },
           ],
+          type: 'block',
+        }),
+        defineArrayMember({
+          type: 'object',
+          name: 'divider',
+          title: 'Divider',
+          fields: [
+            {
+              name: 'height',
+              title: 'Height',
+              type: 'string',
+              options: {
+                list: [
+                  { title: '8px', value: '8' },
+                  { title: '12px', value: '12' },
+                  { title: '16px', value: '16' },
+                  { title: '24px', value: '24' },
+                ],
+              },
+              description: 'Select the height of the divider',
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: {
+              height: 'height',
+            },
+            prepare({ height }) {
+              return {
+                title: `Divider - ${height}px`,
+              }
+            },
+          },
         }),
       ],
     }),
@@ -92,21 +118,11 @@ export default defineType({
       type: 'array',
       of: [{ type: 'button' }],
     }),
-    defineField({
-      name: 'backgroundColor',
-      title: 'Background Color',
-      type: 'colorPicker',
-    }),
   ],
   preview: {
     select: {
       title: 'title',
-    },
-    prepare({ title }) {
-      return {
-        title: title || 'Text Content',
-        subtitle: 'Text content block',
-      }
+      media: 'video',
     },
   },
 })

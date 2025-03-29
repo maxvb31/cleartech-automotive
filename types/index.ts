@@ -68,7 +68,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
-  sections?: Array<HeroSection | TextSection>
+  sections?: Array<HeroSection>
 }
 export interface PagePayload {
   body?: PortableTextBlock[]
@@ -76,7 +76,7 @@ export interface PagePayload {
   overview?: PortableTextBlock[]
   title?: string
   slug?: string
-  sections?: Array<HeroSection | TextSection>
+  sections?: Array<HeroSection>
 }
 
 export interface ProjectPayload {
@@ -88,9 +88,7 @@ export interface ProjectPayload {
   slug: string
   tags?: string[]
   title?: string
-  sections?: Array<
-    HeroSection | TextSection | TextBlockSection | FeaturedWorkSection
-  >
+  sections?: Array<HeroSection>
   category?: {
     _type: 'reference'
     _ref: string
@@ -137,6 +135,7 @@ export interface HeroSection {
   _type: 'hero'
   title: string
   video?: SanityFile
+  overview?: PortableTextBlock[]
   buttons?: {
     label: string
     link?: { slug: string; title: string }
@@ -146,68 +145,15 @@ export interface HeroSection {
   }[]
 }
 
-export interface TextBlockSection {
-  _type: 'textBlock'
-  tag: string
-  overview: PortableTextBlock[]
-}
-
-export interface FeaturedWorkSection {
-  _type: 'featuredWork'
+export interface LargeProductShowcaseSection {
+  _type: 'largeProductShowcase'
+  tagline: string
   title: string
-  projects: ShowcaseProject[]
-}
-
-export interface ServiceListSection {
-  _type: 'serviceList'
-  title: string
-  services: ServicePayload[]
-}
-
-export interface SelectedWorkSection {
-  _type: 'selectedWork'
-  title: string
-  overview: PortableTextBlock[]
-  projects: ShowcaseProject[]
-}
-
-export interface AboutMeSection {
-  _type: 'aboutMe'
-  title: string
-  overview: PortableTextBlock[]
-  image: SanityImage
-  image2: SanityImage
-  tag: string
-  socialLinks: {
-    text: string
-    url: string
-    icon?: SanityImage
-  }[]
-}
-
-export interface ContactSection {
-  _type: 'contact'
-  title: string
-  buttonText: string
-}
-
-export interface TextContent {
-  _type: 'textContent'
-  alignment: 'left' | 'center' | 'right' | 'split'
-  title?: string
-  body?: PortableTextBlock[]
+  product: SanityImage
   buttons?: {
     label: string
     link?: { slug: string; title: string }
     anchor?: string
     externalLink?: string
-    buttonColor?: { label: string; value: string }
   }[]
-  backgroundColor?: { label: string; value: string }
-}
-
-export interface TextSection {
-  _type: 'textSection'
-  heading?: string
-  textContent: TextContent
 }

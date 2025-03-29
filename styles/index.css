@@ -1,5 +1,13 @@
 @import './components.css';
 
+@font-face {
+  font-family: 'Michroma';
+  src: url('/fonts/Michroma-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,8 +46,8 @@ section {
 .container {
   margin-top: 0;
   flex-grow: 1;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   margin: 0 auto;
   width: 100%;
   max-width: 1800px;
