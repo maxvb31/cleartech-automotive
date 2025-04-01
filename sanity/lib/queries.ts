@@ -61,6 +61,48 @@ export const homePageQuery = groq`
         buttonColor
       },
     },
+    infoTabs {
+      _type,
+      title,
+      tabs[] {
+        _type,
+        title,
+        overview,
+      },
+      backgroundImage {
+        hotspot,
+        asset,
+        url,
+        crop,
+        alt
+      },
+      buttons[] {
+        label,
+        "link": link-> { "slug": slug.current, title },
+        anchor,
+        externalLink,
+        buttonColor
+      }
+    },
+    infoBlock {
+      _type,
+      image,
+      title,
+      overview,
+    },
+    contact {
+      _type,
+      title,
+      overview,
+      backgroundImage {
+        hotspot,
+        asset,
+        url,
+        crop,
+        alt
+      },
+      
+    }
   }
 `
 

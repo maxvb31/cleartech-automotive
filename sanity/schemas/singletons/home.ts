@@ -80,6 +80,18 @@ export default defineType({
         defineArrayMember({
           type: 'hero',
         }),
+        defineArrayMember({
+          type: 'largeProductShowcase',
+        }),
+        defineArrayMember({
+          type: 'infoTabs',
+        }),
+        defineArrayMember({
+          type: 'infoBlock',
+        }),
+        defineArrayMember({
+          type: 'contact',
+        }),
       ],
     }),
   ],

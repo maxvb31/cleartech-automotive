@@ -10,6 +10,9 @@ import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import { Hero } from '@/components/sections/Hero'
 import { LargeProductShowcase } from '@/components/sections/LargeProductShowcase'
+import { InfoTabs } from '@/components/sections/InfoTabs'
+import { InfoBlock } from '@/components/sections/InfoBlock'
+import { Contact } from '@/components/sections/Contact'
 import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
@@ -59,6 +62,12 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             return <Hero key={index} {...section} />
           case 'largeProductShowcase':
             return <LargeProductShowcase key={index} {...section} />
+          case 'infoTabs':
+            return <InfoTabs key={index} {...section} />
+          case 'infoBlock':
+            return <InfoBlock key={index} {...section} />
+          case 'contact':
+            return <Contact key={index} {...section} />
           default:
             return null
         }

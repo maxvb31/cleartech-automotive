@@ -112,12 +112,6 @@ export default defineType({
         }),
       ],
     }),
-    defineField({
-      name: 'buttons',
-      title: 'Buttons',
-      type: 'array',
-      of: [{ type: 'button' }],
-    }),
   ],
   preview: {
     select: {

@@ -157,3 +157,37 @@ export interface LargeProductShowcaseSection {
     externalLink?: string
   }[]
 }
+
+export interface InfoTabsSection {
+  _type: 'infoTabs'
+  title: string
+  tabs: InfoTab[]
+  backgroundImage: SanityImage
+  buttons?: {
+    label: string
+    link?: { slug: string; title: string }
+    anchor?: string
+    externalLink?: string
+    buttonColor?: { label: string; value: string }
+  }[]
+}
+
+export interface InfoTab {
+  _type: 'infoTab'
+  title: string
+  overview?: PortableTextBlock[]
+}
+
+export interface InfoBlock {
+  _type: 'infoBlock'
+  title: string
+  overview?: PortableTextBlock[]
+  image?: SanityImage
+}
+
+export interface ContactSection {
+  _type: 'contact'
+  title: string
+  overview?: PortableTextBlock[]
+  backgroundImage: SanityImage
+}
