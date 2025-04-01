@@ -43,26 +43,6 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
     window.scrollTo(0, 0)
   }, [data, sections])
 
-  // Function to render different section types
-  const renderSection = (section: any, index: number) => {
-    switch (section._type) {
-      case 'singleImage':
-        return <SingleImage key={index} image={section.image} />
-      case 'doubleImages':
-        return (
-          <DoubleImages
-            key={index}
-            image1={section.image1}
-            image2={section.image2}
-          />
-        )
-      case 'textSection':
-        return <TextSection key={index} section={section} />
-      default:
-        return null
-    }
-  }
-
   return (
     <>
       <section className="bg-[#F6F1ED]">
@@ -127,9 +107,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
       {/* Render sections */}
       {sections && sections.length > 0 && (
         <section className="bg-[#F6F1ED]">
-          <div className="container">
-            {sections.map((section, index) => renderSection(section, index))}
-          </div>
+          <div className="container"></div>
         </section>
       )}
     </>
