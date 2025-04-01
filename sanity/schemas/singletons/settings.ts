@@ -14,6 +14,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'logo',
+      title: 'Site Logo',
+      type: 'image',
+      description: 'Logo displayed in the site header.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item List',
       description: 'Links displayed in the site header.',

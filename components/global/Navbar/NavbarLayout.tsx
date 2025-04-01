@@ -3,7 +3,9 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { resolveHref } from '@/sanity/lib/utils'
+import { urlForImage } from '@/sanity/lib/urlForImage'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 interface NavbarProps {
@@ -15,38 +17,80 @@ export default function Navbar({ data }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="top-0 z-10 backdrop-blur">
+    <header className="top-0 z-30 backdrop-blur bg-[#171717]">
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex flex-wrap items-center gap-x-5 py-4 md:px-16 md:py-5 ">
-        {menuItems.map((menuItem, key) => {
-          const href = menuItem.anchor
-            ? `#${menuItem.anchor}` // If anchor link, set href to the anchor
-            : resolveHref(menuItem?._type, menuItem?.slug) // Otherwise, resolve internal link
+      <nav className="hidden md:flex items-center justify-between py-4 md:px-16 md:py-5">
+        {/* Logo on the left */}
+        <div className="flex-shrink-0">
+          <Link href="/">
+            {data?.logo ? (
+              <Image
+                src={urlForImage(data.logo).url()}
+                alt={data?.siteTitle || 'Site logo'}
+                width={150}
+                height={50}
+                className="object-contain"
+              />
+            ) : (
+              <span className="text-lg font-bold text-white">
+                {data?.siteTitle}
+              </span>
+            )}
+          </Link>
+        </div>
 
-          if (!href) return null
+        {/* Center navigation links */}
+        <div className="flex flex-wrap items-center justify-center gap-x-5 flex-grow">
+          {menuItems.map((menuItem, key) => {
+            const href = menuItem.anchor
+              ? `#${menuItem.anchor}` // If anchor link, set href to the anchor
+              : resolveHref(menuItem?._type, menuItem?.slug) // Otherwise, resolve internal link
 
-          return (
-            <Link
-              key={key}
-              className={`text-lg hover:text-black md:text-xl ${
-                menuItem?._type === 'home'
-                  ? 'font-extrabold text-black'
-                  : 'text-black'
-              }`}
-              href={href}
-            >
-              {menuItem.title}
-            </Link>
-          )
-        })}
+            if (!href) return null
+
+            return (
+              <Link
+                key={key}
+                className={`text-lg hover:text-gray-300 md:text-xl ${
+                  menuItem?._type === 'home'
+                    ? 'font-extrabold text-white'
+                    : 'text-white'
+                }`}
+                href={href}
+              >
+                {menuItem.title}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Empty div for symmetry */}
+        <div className="flex-shrink-0 w-[150px]"></div>
       </nav>
 
       {/* Mobile Navigation */}
       <nav className="md:hidden">
         <div className="flex items-center justify-between px-4 py-4">
+          {/* Logo on mobile */}
+          <Link href="/" className="flex-shrink-0">
+            {data?.logo ? (
+              <Image
+                src={urlForImage(data.logo).url()}
+                alt={data?.siteTitle || 'Site logo'}
+                width={100}
+                height={40}
+                className="object-contain"
+              />
+            ) : (
+              <span className="text-lg font-bold text-white">
+                {data?.siteTitle}
+              </span>
+            )}
+          </Link>
+
           <button
             type="button"
-            className="text-black hover:text-black"
+            className="text-white hover:text-gray-300"
             aria-label="Open Mobile Menu"
             onClick={() => setMobileMenuOpen(true)}
           >
@@ -71,7 +115,7 @@ export default function Navbar({ data }: NavbarProps) {
         <Transition.Root show={mobileMenuOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="relative z-10"
+            className="relative z-30"
             onClose={setMobileMenuOpen}
           >
             <Transition.Child
@@ -86,7 +130,7 @@ export default function Navbar({ data }: NavbarProps) {
               <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-10 flex items-center justify-center">
+            <div className="fixed inset-0 z-30 flex items-center justify-center">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"

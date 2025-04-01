@@ -119,6 +119,7 @@ export interface SubServicePayload {
 
 export interface SettingsPayload {
   siteTitle?: string
+  logo?: Image
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
   ogImage?: Image

@@ -209,6 +209,7 @@ export const settingsQuery = groq`
   *[_type == "settings"][0]{
     siteTitle,
     footer,
+    logo,
     email,
     socialMediaLinks[]{
       name,

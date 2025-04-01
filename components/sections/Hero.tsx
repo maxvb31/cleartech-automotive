@@ -117,7 +117,7 @@ export function Hero({ title, video, buttons, overview }: HeroProps) {
           {/* Right Side: Buttons */}
           <div
             ref={buttonsRef}
-            className="flex items-center justify-end gap-4 md:gap-6"
+            className="flex items-center justify-start md:justify-end gap-4 md:gap-6"
           >
             {buttons?.map((button) => (
               <Button
